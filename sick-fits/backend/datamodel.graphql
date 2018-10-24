@@ -1,0 +1,21 @@
+# Overview: this file is for Prisma on the backend.
+# prisma.graphql is what Prisma generates based on this file.
+# schema.graphql is the public-facing API - that is what we'll be interfacing with via javascript.
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String!
+}
+
+type Item {
+  id: ID! @unique
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  # user: User!
+}
