@@ -1,11 +1,23 @@
 # Overview: this file is for Prisma on the backend.
 # prisma.graphql is what Prisma generates based on this file.
 # schema.graphql is the public-facing API - that is what we'll be interfacing with via javascript.
+enum Permission {
+  ADMIN
+  USER
+  ITEMCREATE
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
+}
 
 type User {
   id: ID! @unique
   name: String!
-  email: String!
+  email: String! @unique
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: [Permission]
 }
 
 type Item {
