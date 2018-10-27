@@ -1,4 +1,5 @@
 # import * from './generated/prisma.graphql'
+# Anytime you add something here, you have to add something in the resolvers to match
 
 type Mutation {
   createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
@@ -11,4 +12,5 @@ type Query {
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
   item(where: ItemWhereUniqueInput!): Item
   itemsConnection(where: ItemWhereInput): ItemConnection!
+  me: User
 }
