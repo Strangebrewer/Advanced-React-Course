@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
-import  { ALL_ITEMS_QUERY } from "./Items";
+import { ALL_ITEMS_QUERY } from "./Items";
 
 const DELETE_ITEM_MUTATION = gql`
   mutation DELETE_ITEM_MUTATION($id: ID!) {
@@ -25,15 +25,17 @@ class DeleteItem extends Component {
   render() {
     return (
       <Mutation
-       mutation={DELETE_ITEM_MUTATION}
+        mutation={DELETE_ITEM_MUTATION}
         variables={{ id: this.props.id }}
         update={this.update}
-        >
+      >
         {(deleteItem, { error }) => (
           <button onClick={() => {
             console.log(this.props.id)
             if (confirm("Are you sure you want to delete this item?")) {
-              deleteItem();
+              deleteItem().catch(err => {
+                alert(err.message);
+              });
             }
           }}>{this.props.children}</button>
         )}
