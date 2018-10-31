@@ -33,7 +33,6 @@ class MyApp extends App {
             <Component {...pageProps} />
           </Page>
         </ApolloProvider>
-
       </Container>
     );
   }
